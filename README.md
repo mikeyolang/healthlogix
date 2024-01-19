@@ -1,59 +1,73 @@
-# healthlogix
+# Health Logix Documentation
 
-Welcome to your new healthlogix project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+## Overview
+This DApp (Decentralized Application) aims to streamline patient management for nurses, providing features for patient assignment, form submission, and record keeping. The project is implemented using Motoko for the backend logic and a simple HTML/JavaScript frontend.
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+## Motoko Modules
 
-To learn more before you start working with healthlogix, see the following documentation available online:
+### 1. Nurse Module (`nurse.mo`)
+- **Description:** Manages nurse information and functionalities.
+- **Key Functions:**
+  - `addNurse`: Adds a new nurse to the system.
+  - `getNurseById`: Retrieves nurse information by ID.
+  - `login`: Handles nurse login, assigning patients, and retrieving assigned patients.
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Motoko Programming Language Guide](https://internetcomputer.org/docs/current/motoko/main/motoko)
-- [Motoko Language Quick Reference](https://internetcomputer.org/docs/current/motoko/main/language-manual)
+### 2. Admin Module (`admin.mo`)
+- **Description:** Manages admin-related functionalities.
+- **Key Functions:**
+  - `addAdmin`: Adds a new admin to the system.
+  - `login`: Handles admin login and access to the admin dashboard.
 
-If you want to start working on your project right away, you might want to try the following commands:
+### 3. Patient Module (`patient.mo`)
+- **Description:** Manages patient information and functionalities.
+- **Key Functions:**
+  - `addPatient`: Adds a new patient to the system.
+  - `getPatientById`: Retrieves patient information by ID.
+  - `getAllPatients`: Retrieves information for all patients.
+  - `addMedication`: Adds medication information for a patient.
+  - `submitForm`: Submits a form for a patient.
 
-```bash
-cd healthlogix/
-dfx help
-dfx canister --help
-```
+### 4. Form Module (`form.mo`)
+- **Description:** Manages form-related functionalities.
+- **Key Functions:**
+  - `submitForm`: Submits a form with relevant data.
+  - `getFormById`: Retrieves a submitted form by ID.
+  - `getAllForms`: Retrieves all submitted forms.
 
-## Running the project locally
+### 5. Main Module (`main.mo`)
+- **Description:** Ties together the functionalities of all modules.
+- **Key Functions:**
+  - `runApp`: Initializes and runs the DApp, demonstrating various functionalities.
 
-If you want to test your project locally, you can use the following commands:
+## Frontend Structure
 
-```bash
-# Starts the replica, running in the background
-dfx start --background
+### 1. HTML Files
+- `index.html`: Main entry point for the DApp.
+- `login.html`: Login page for nurses.
+- `adminDashboard.html`: Admin dashboard page.
+- `nurseDashboard.html`: Nurse dashboard page.
+- `patientList.html`: Page displaying the list of patients for a nurse.
+- `formSubmission.html`: Form submission page.
+- `viewForms.html`: Page to view submitted forms.
 
-# Deploys your canisters to the replica and generates your candid interface
-dfx deploy
-```
+### 2. JavaScript Files
+- `index.js`: Main JavaScript file handling navigation and initialization.
+- `login.js`: JavaScript file for the nurse login page.
+- `adminDashboard.js`: JavaScript file for the admin dashboard page.
+- `nurseDashboard.js`: JavaScript file for the nurse dashboard page.
+- `patientList.js`: JavaScript file for the patient list page.
+- `formSubmission.js`: JavaScript file for the form submission page.
+- `viewForms.js`: JavaScript file for the page to view submitted forms.
 
-Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
+## Deployment
+- The Motoko backend is deployed as a canister on the Internet Computer.
+- Frontend files and assets are hosted on a web server.
 
-If you have made changes to your backend canister, you can generate a new candid interface with
+## Usage
+1. Access the DApp through the provided URL.
+2. Navigate through the different views (login, dashboard, patient list, etc.).
+3. Interact with the forms, submit data, and view relevant information.
 
-```bash
-npm run generate
-```
+## Acknowledgments
+- Special thanks to the Internet Computer platform for enabling the development of decentralized applications.
 
-at any time. This is recommended before starting the frontend development server, and will be run automatically any time you run `dfx deploy`.
-
-If you are making frontend changes, you can start a development server with
-
-```bash
-npm start
-```
-
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 4943.
-
-### Note on frontend environment variables
-
-If you are hosting frontend code somewhere without using DFX, you may need to make one of the following adjustments to ensure your project does not fetch the root key in production:
-
-- set`DFX_NETWORK` to `ic` if you are using Webpack
-- use your own preferred method to replace `process.env.DFX_NETWORK` in the autogenerated declarations
-  - Setting `canisters -> {asset_canister_id} -> declarations -> env_override to a string` in `dfx.json` will replace `process.env.DFX_NETWORK` with the string in the autogenerated declarations
-- Write your own `createActor` constructor
