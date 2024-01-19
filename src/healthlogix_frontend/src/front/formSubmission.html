@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>HealthLogix App</title>
+  </head>
+  <body>
+<form id="nurseForm" class="hidden">
+    <h2>Nurse Form</h2>
+    <label for="patientDropdown">Select Patient:</label>
+    <select id="patientDropdown" name="patientDropdown" required>
+      <!-- Populate with patient names -->
+      <option value="patient1">Patient 1</option>
+      <option value="patient2">Patient 2</option>
+      <option value="patient2">Patient 3</option>
+      <option value="patient2">Patient 4</option>
+      
+    </select>
+     <form action="" method="post" onsubmit="return showConfirmation()">
+      <label><strong>Patient Information:</strong></label>
+      <label for="patientName">Name:</label>
+      <input type="text" id="patientName" name="patientName" required>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="gender">Gender:</label>
+      <input type="text" id="gender" name="gender" required>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" rows="2" required></textarea>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="emergencyContact">Emergency Contact:</label>
+      <input type="text" id="emergencyContact" name="emergencyContact" required>
+
+      <label><strong>Vital Signs:</strong></label>
+      <label for="temperature">Temperature (°F):</label>
+      <input type="text" id="temperature" name="temperature" required>
+
+      <label for="bloodPressure">Blood Pressure (mmHg):</label>
+      <input type="text" id="bloodPressure" name="bloodPressure" required>
+
+      <label for="pulseRate">Pulse Rate (bpm):</label>
+      <input type="text" id="pulseRate" name="pulseRate" required>
+
+      <label for="respiratoryRate">Respiratory Rate (breaths/min):</label>
+      <input type="text" id="respiratoryRate" name="respiratoryRate" required>
+
+      <label for="oxygenSaturation">Oxygen Saturation (%):</label>
+      <input type="text" id="oxygenSaturation" name="oxygenSaturation" required>
+
+      <label><strong>Admission Details:</strong></label>
+      <label for="admittingDiagnosis">Admitting Diagnosis:</label>
+      <input type="text" id="admittingDiagnosis" name="admittingDiagnosis" required>
+
+      <label for="admissionDateTime">Date and Time of Admission:</label>
+      <input type="datetime-local" id="admissionDateTime" name="admissionDateTime" required>
+
+      <label for="medicalHistory">Medical History:</label>
+      <textarea id="medicalHistory" name="medicalHistory" rows="2" required></textarea>
+
+      <label><strong>Assessment:</strong></label>
+      <label for="generalAppearance">General Appearance:</label>
+      <textarea id="generalAppearance" name="generalAppearance" rows="2" required></textarea>
+
+      <label for="skinCondition">Skin Condition:</label>
+      <textarea id="skinCondition" name="skinCondition" rows="2" required></textarea>
+
+      <label for="neurologicalStatus">Neurological Status:</label>
+      <textarea id="neurologicalStatus" name="neurologicalStatus" rows="2" required></textarea>
+
+      <label for="cardiovascularStatus">Cardiovascular Status:</label>
+      <textarea id="cardiovascularStatus" name="cardiovascularStatus" rows="2" required></textarea>
+
+      <label for="respiratoryStatus">Respiratory Status:</label>
+      <textarea id="respiratoryStatus" name="respiratoryStatus" rows="2" required></textarea>
+
+      <label for="gastrointestinalStatus">Gastrointestinal Status:</label>
+      <textarea id="gastrointestinalStatus" name="gastrointestinalStatus" rows="2" required></textarea>
+
+      <label><strong>Interventions:</strong></label>
+      <label><strong>Medications:</strong></label>
+      <label for="medicationName">Name:</label>
+      <input type="text" id="medicationName" name="medicationName" required>
+
+      <label for="medicationDose">Dose:</label>
+      <input type="text" id="medicationDose" name="medicationDose" required>
+
+      <label for="medicationRoute">Route:</label>
+      <input type="text" id="medicationRoute" name="medicationRoute" required>
+
+      <label for="medicationFrequency">Frequency:</label>
+      <input type="text" id="medicationFrequency" name="medicationFrequency" required>
+
+      <label><strong>Procedures:</strong></label>
+      <label for="procedureDescription">Description:</label>
+      <textarea id="procedureDescription" name="procedureDescription" rows="2" required></textarea>
+
+      <label for="procedureDate">Date:</label>
+      <input type="date" id="procedureDate" name="procedureDate" required>
+
+      <label for="procedureTime">Time:</label>
+      <input type="time" id="procedureTime" name="procedureTime" required>
+
+      <label><strong>Patient Education:</strong></label>
+      <label for="topicsCovered">Topics Covered:</label>
+      <textarea id="topicsCovered" name="topicsCovered" rows="2" required></textarea>
+
+      <label><strong>Nursing Notes:</strong></label>
+      <label><strong>Shift Report:</strong></label>
+      <label for="shiftReport">Significant events during the shift:</label>
+      <textarea id="shiftReport" name="shiftReport" rows="2" required></textarea>
+
+      <label><strong>Changes in Condition:</strong></label>
+      <label for="changesInCondition">Any changes in patient's status:</label>
+      <textarea id="changesInCondition" name="changesInCondition" rows="2" required></textarea>
+
+      <label><strong>Collaboration with Other Healthcare Professionals:</strong></label>
+      <label for="communicationDetails">Communication with doctors, therapists,
+
+      <button type="submit">Submit</button>
+
+      <form id="patientForm" class="hidden">
+        <h2>Patient Form</h2>
+        <form action="" method="post" onsubmit="return showConfirmation()">
+          <section>
+              <h2>Personal Information:</h2>
+              <label for="patientName">Name:</label>
+              <input type="text" id="patientName" name="patientName" required>
+  
+              <label for="dob">Date of Birth:</label>
+              <input type="date" id="dob" name="dob" required>
+  
+              <label for="gender">Gender:</label>
+              <select id="gender" name="gender" required>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+              </select>
+  
+              <label for="address">Address:</label>
+              <textarea id="address" name="address" rows="4" required></textarea>
+  
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+          </section>
+  
+          <section>
+              <h2>Medical Information:</h2>
+              <label for="healthConditions">Health Conditions:</label>
+              <textarea id="healthConditions" name="healthConditions" rows="4" required></textarea>
+  
+              <label for="medications">Current Medications:</label>
+              <textarea id="medications" name="medications" rows="4" required></textarea>
+          </section>
+  
+          <section>
+              <h2>Account Information:</h2>
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" required>
+  
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required>
+  
+              <label for="confirmPassword">Confirm Password:</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" required>
+          </section>
+  
+          <button type="submit">Register</button>
+      </form>
+    </div>
+  
+    <script src="app.js"> function showConfirmation() {
+      var confirmation = confirm("Are you sure you want to submit the form?");
+      return confirmation;}</script>
+  </body>
+  
+  </form>
+  </html>
