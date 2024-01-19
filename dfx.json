@@ -1,0 +1,29 @@
+{
+  "canisters": {
+    "healthlogix_backend": {
+      "main": "src/healthlogix_backend/main.mo",
+      "type": "motoko"
+    },
+    "healthlogix_frontend": {
+      "dependencies": [
+        "healthlogix_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/healthlogix_frontend/src/index.html"
+      },
+      "source": [
+        "src/healthlogix_frontend/assets",
+        "dist/healthlogix_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
